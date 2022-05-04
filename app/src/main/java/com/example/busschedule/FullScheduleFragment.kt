@@ -65,19 +65,25 @@ class FullScheduleFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val busStopAdapter = BusStopAdapter {
+
+            // Define the Destination and bind the data with the package.
             val action =
                 FullScheduleFragmentDirections.actionFullScheduleFragmentToStopScheduleFragment(
                     stopName = it.stopName
                 )
+
+            // Initialize the navigation
             view.findNavController().navigate(action)
+
         }
 
         recyclerView.adapter = busStopAdapter
 
         // submitList() is a call that accesses the database. To prevent the
         // call from potentially locking the UI, you should use a
-        // coroutine scope to launch the function. Using GlobalScope is not
-        // best practice, and in the next step we'll see how to improve this.
+        // coroutine scope to launch the function.
+        //
+        // Using GlobalScope is not best practice, and in the next step we'll see how to improve this.
         // GlobalScope.launch(Dispatchers.IO) {
         //     busStopAdapter.submitList(viewModel.fullSchedule())
         // }

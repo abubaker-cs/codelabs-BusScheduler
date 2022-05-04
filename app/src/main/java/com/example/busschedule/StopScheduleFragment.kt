@@ -83,8 +83,9 @@ class StopScheduleFragment : Fragment() {
 
         // submitList() is a call that accesses the database. To prevent the
         // call from potentially locking the UI, you should use a
-        // coroutine scope to launch the function. Using GlobalScope is not
-        // best practice, and in the next step we'll see how to improve this.
+        // coroutine scope to launch the function.
+        //
+        // Using GlobalScope is not best practice, and in the next step we'll see how to improve this.
         // GlobalScope.launch(Dispatchers.IO) {
         //    busStopAdapter.submitList(viewModel.scheduleForStopName(stopName))
         //}
