@@ -45,6 +45,7 @@ class StopScheduleFragment : Fragment() {
 
     private lateinit var stopName: String
 
+    // get a reference to the view model
     private val viewModel: BusScheduleViewModel by activityViewModels {
         BusScheduleViewModelFactory(
             (activity?.application as BusScheduleApplication).database.scheduleDao()
@@ -71,6 +72,8 @@ class StopScheduleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // // set up the recycler view and assign its layout manager.
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 

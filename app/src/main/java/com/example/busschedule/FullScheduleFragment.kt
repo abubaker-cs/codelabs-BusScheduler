@@ -40,6 +40,7 @@ class FullScheduleFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
+    // get a reference to the view model
     private val viewModel: BusScheduleViewModel by activityViewModels {
         BusScheduleViewModelFactory(
             (activity?.application as BusScheduleApplication).database.scheduleDao()
@@ -58,6 +59,8 @@ class FullScheduleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // set up the recycler view and assign its layout manager.
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -68,6 +71,7 @@ class FullScheduleFragment : Fragment() {
                 )
             view.findNavController().navigate(action)
         }
+
         recyclerView.adapter = busStopAdapter
 
         // submitList() is a call that accesses the database. To prevent the
